@@ -11,7 +11,7 @@
 
 ```javascript
   // vite.config.ts
-import { InsertGitToHtml } from 'vite-plugin-mpa'
+import { InsertGitToHtml } from 'vite-plugin-git-html'
 
 // @see https://vitejs.dev/config/
 export default defineConfig({
