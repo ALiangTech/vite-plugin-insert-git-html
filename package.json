@@ -10,7 +10,8 @@
     "build:ts": "tsup lib/index.ts --format esm,cjs --dts"
   },
   "files": [
-    "dist","package.json"
+    "dist",
+    "package.json"
   ],
   "module": "dist/index.js",
   "main": "dist/index.cjs",
@@ -18,7 +19,7 @@
   "dependencies": {
     "shelljs": "^0.8.5"
   },
-    "keywords": [
+  "keywords": [
     "vite-plugin",
     "git",
     "html"
