@@ -49,7 +49,7 @@ const Default_Commands:Commands = [
 interface options {
   commands: Commands
 }
-export const InsertGitToHtml = (options: options = {
+const InsertGitToHtml = (options: options = {
   commands: []
 } ) => {
   return {
@@ -83,3 +83,4 @@ export const InsertGitToHtml = (options: options = {
     },
   };
 };
+export default InsertGitToHtml
