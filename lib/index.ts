@@ -49,7 +49,7 @@ const Default_Commands:Commands = [
 interface options {
   commands: Commands
 }
-const InsertGitToHtml = (options: options = {
+export const InsertGitToHtml = (options: options = {
   commands: []
 } ) => {
   return {
@@ -76,7 +76,7 @@ const InsertGitToHtml = (options: options = {
            info.forEach((item) => {
               if(item) {
                const { stdout, key} = item;
-                attrs[key] = stdout
+                attrs[key] = stdout.replace(/\r|\n/ig, "") // 删除换行符
               }
            })
       return res;
