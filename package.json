@@ -1,22 +1,35 @@
 {
-  "name": "vite-insert-git-to-html",
+  "name": "vite-plugin-git-html",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "build": "vue-tsc --noEmit --declaration && vite build",
+    "preview": "vite preview",
+    "build:ts": "tsup lib/index.ts --format esm,cjs --dts"
   },
+  "files": [
+    "dist"
+  ],
+  "module": "dist/index.mjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
-    "shelljs": "^0.8.5",
-    "vue": "^3.2.37"
+    "shelljs": "^0.8.5"
   },
+    "keywords": [
+    "vite-plugin",
+    "git",
+    "html"
+  ],
   "devDependencies": {
     "@types/shelljs": "^0.8.11",
     "@vitejs/plugin-vue": "^3.0.3",
     "typescript": "^4.6.4",
     "vite": "^3.0.7",
-    "vue-tsc": "^0.39.5"
+    "vue-tsc": "^0.39.5",
+    "tsup": "^6.2.3",
+    "vue": "^3.2.37"
   }
 }

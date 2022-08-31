@@ -1,6 +1,16 @@
 import shell from "shelljs";
-import { Commands, PromiseItem } from './types'
 const FULFILLED = 'fulfilled';
+import { IndexHtmlTransformResult  } from 'vite'
+export interface CommandItem {
+    command: string;
+    key: string
+}
+
+export type Commands = CommandItem[];
+
+export interface PromiseItem extends CommandItem {
+    stdout: string
+}
 // code === 0 正常 能拿到命令执行结果
 async function exec(commands:Commands) {
   if(Array.isArray(commands)) {
@@ -44,33 +54,32 @@ export const InsertGitToHtml = (options: options = {
 } ) => {
   return {
     name: "insert-html-transform",
-    // apply: "build",
+    apply: "build",
     async transformIndexHtml(html:string) {
+      const attrs:Record<string, string> = {};
+      const res:IndexHtmlTransformResult = {
+        html,
+        tags:[
+           {
+            tag: "meta",
+            attrs,
+            injectTo: "head-prepend",
+        }
+        ]
+      }
       const { commands } = options;
       let tempCommands = Default_Commands;
       if (Array.isArray(commands)) {
          tempCommands = [...Default_Commands, ...commands];
       }
        const info = await exec(tempCommands);
-         const attrs:{
-          [key:string]: string
-         } = {};
            info.forEach((item) => {
               if(item) {
                const { stdout, key} = item;
                 attrs[key] = stdout
               }
            })
-        return {
-          html,
-          tags: [
-            {
-              tag: "meta",
-              attrs,
-              injectTo: "head-prepen",
-            },
-          ],
-        };
+      return res;
     },
   };
 };
