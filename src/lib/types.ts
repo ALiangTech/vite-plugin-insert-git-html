@@ -7,7 +7,6 @@ interface CommandItem {
 
 export type Commands = CommandItem[];
 
-export interface PRes {
-    status: string,
-    value: string
+export interface PromiseItem extends CommandItem {
+    stdout: string
 }
