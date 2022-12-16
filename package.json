@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-git-html",
-  "private": true,
-  "version": "0.0.1",
+  "private": false,
+  "version": "0.0.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,8 @@
     "build:ts": "tsup lib/index.ts --format esm,cjs --dts"
   },
   "files": [
-    "dist"
+    "dist",
+    "package.json"
   ],
   "module": "dist/index.js",
   "main": "dist/index.cjs",
@@ -18,7 +19,7 @@
   "dependencies": {
     "shelljs": "^0.8.5"
   },
-    "keywords": [
+  "keywords": [
     "vite-plugin",
     "git",
     "html"
